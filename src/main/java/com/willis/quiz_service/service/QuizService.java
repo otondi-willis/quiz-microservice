@@ -2,6 +2,7 @@ package com.willis.quiz_service.service;
 
 
 import com.willis.quiz_service.dao.QuizDao;
+import com.willis.quiz_service.feign.QuizInterface;
 import com.willis.quiz_service.model.QuestionWrapper;
 import com.willis.quiz_service.model.Quiz;
 import com.willis.quiz_service.model.Response;
@@ -18,8 +19,9 @@ import java.util.Optional;
 public class QuizService {
     @Autowired
     QuizDao quizDao;
-//    @Autowired
-//    QuestionDao questionDao;
+
+    @Autowired
+    QuizInterface quizInterface;
 
     public ResponseEntity<String> createQuiz(String category, int numQ, String title) {
 
