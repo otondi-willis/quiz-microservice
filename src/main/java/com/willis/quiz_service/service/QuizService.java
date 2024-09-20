@@ -24,8 +24,13 @@ public class QuizService {
     QuizInterface quizInterface;
 
     public ResponseEntity<String> createQuiz(String category, int numQ, String title) {
+        List<Integer> questions = quizInterface.getQuestionsForQuiz(category,numQ).getBody();
+        Quiz quiz = new Quiz();
+        quiz.setTitle(title);
+        quiz.setQuestionIds(questions);
+        quizDao.save(quiz);
 
-  //      List<Integer> questions = //call the generate url - RestTemplate http://localhost:8080/question/generate
+        //      List<Integer> questions = //call the generate url - RestTemplate http://localhost:8080/question/generate
 //
 //        // Ensure we only return up to numQ questions
 //        if (questions.size() < numQ) {
